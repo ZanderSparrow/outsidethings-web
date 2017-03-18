@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import { browserHistory } from "react-router";
 import { syncHistoryWithStore, routerMiddleware } from "react-router-redux";
+import thunk from "redux-thunk";
 import freeze from "redux-freeze";
 import { reducers } from "./reducers/index";
 
@@ -9,6 +10,9 @@ let middlewares = [];
 
 // add the router middleware
 middlewares.push(routerMiddleware(browserHistory));
+
+// add thunk
+middlewares.push(thunk);
 
 // add the freeze dev middleware
 if (process.env.NODE_ENV !== 'production') {

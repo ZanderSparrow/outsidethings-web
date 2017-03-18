@@ -1,0 +1,3 @@
+export const FETCH_ART = 'FETCH_ART';
+export const FETCH_ART_RECIEVED = 'FETCH_ART_RECIEVED';
+export const FETCH_ART_REJECTED = 'FETCH_ART_REJECTED';

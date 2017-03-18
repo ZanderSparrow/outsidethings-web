@@ -1,9 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from 'react-redux';
 import "../stylesheets/main.scss";
+import { getArt } from '../actions';
 
-// app component
-export default class App extends React.Component {
-  // render
+class App extends Component {
+  componentWillMount() {
+    this.props.getArt();
+  }
+
   render() {
     return (
       <div className="container">
@@ -12,3 +16,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default connect(null, { getArt })(App);
