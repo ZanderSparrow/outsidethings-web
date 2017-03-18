@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import "../stylesheets/main.scss";
 import { getArt } from '../actions';
 
+import NavBar from './NavBar';
+
 class App extends Component {
   componentWillMount() {
     this.props.getArt();
@@ -11,6 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <NavBar />
         {this.props.children}
       </div>
     );
