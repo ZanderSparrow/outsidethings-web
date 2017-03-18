@@ -5,7 +5,8 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  fetching: false
+  fetching: false,
+  data: []
 };
 
 export default (state = initialState, action) => {
@@ -15,6 +16,7 @@ export default (state = initialState, action) => {
     case FETCH_ART_REJECTED:
       return { ...state, fetching: false, error: action.payload };
     case FETCH_ART_RECIEVED:
+      console.log(action.payload);
       return { ...state, fetching: false, error: null, data: action.payload };
     default:
       return state;
