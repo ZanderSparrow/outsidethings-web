@@ -1,19 +1,19 @@
 {
-  "name": "redux-minimal",
+  "name": "outsidethings",
   "version": "1.0.0",
-  "description": "Start building complex react-redux apps today, with this minimalist easy to understand starter kit (boilerplate)",
+  "description": "Find things that are outside, like art and trees.",
   "keywords": [
-    "react",
-    "redux",
-    "minimal",
-    "starter kit",
-    "boilerplate"
+    "outside",
+    "outsidethings",
+    "trees",
+    "art",
+    "san francisco"
   ],
   "main": "index.js",
-  "homepage": "http://redux-minimal.js.org/",
+  "homepage": "https://github.com/ZanderSparrow/outsidethings-web",
   "repository": {
     "type": "git",
-    "url": "https://github.com/catalin-luntraru/redux-minimal"
+    "url": "https://github.com/ZanderSparrow/outsidethings-web"
   },
   "scripts": {
     "start": "webpack-dev-server --inline --hot --history-api-fallback --host localhost --port 8080",
@@ -29,7 +29,7 @@
       "stage-3"
     ]
   },
-  "author": "Catalin Luntraru",
+  "author": "Zander Sparrow",
   "license": "MIT",
   "dependencies": {
     "react": "^15.4.2",
