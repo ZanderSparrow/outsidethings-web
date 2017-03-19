@@ -2,10 +2,10 @@ import React from 'react';
 
 const ArtItem = ({ artwork }) => {
   return (
-    <div className="art-item">
-      <div>{artwork.title}</div>
-      <div>{artwork.artist}</div>
-    </div>
+    <p className="art-item">
+      <div className="title">{artwork.title}</div>
+      <div className="artist">{artwork.artist}</div>
+    </p>
   );
 }
 
