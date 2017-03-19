@@ -16,11 +16,14 @@
     "url": "https://github.com/ZanderSparrow/outsidethings-web"
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --hot --history-api-fallback --host localhost --port 8080",
+    "start": "nodemon server.js",
+    "dev": "webpack-dev-server --inline --hot --history-api-fallback --host localhost --port 8080",
     "build-dev": "webpack --config webpack.dev.config.js",
     "build-prod": "webpack -p --config webpack.prod.config.js",
     "test": "mocha --recursive --compilers js:babel-register --require babel-polyfill --require ignore-styles",
-    "test-watch": "npm test -- --watch"
+    "test-watch": "npm test -- --watch",
+    "startForever": "NODE_ENV=production forever start --spinSleepTime 10000 server.js",
+    "restartForever": "NODE_ENV=production forever restart server.js"
   },
   "babel": {
     "presets": [
@@ -32,6 +35,8 @@
   "author": "Zander Sparrow",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
