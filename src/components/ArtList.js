@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ArtItem from './ArtItem';
 
 class ArtList extends Component {
   componentWillMount() {
@@ -15,7 +16,7 @@ class ArtList extends Component {
     return (
       <div>
         <pre>{JSON.stringify(this.props.arts)}</pre>
-        {data.map(art => { return <div key={art._id_}>{art.title}</div> })}
+        {data.map(art => { return <ArtItem key={art._id_} artwork={art} /> })}
       </div>
     );
   }

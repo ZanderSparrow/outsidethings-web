@@ -26,7 +26,7 @@ app.use(function(req, res, next) {
   }
 });
 
-console.log(`server running on port ${port} in ${process.env.NODE_ENV} mode`);
+console.log(`server running on port ${port} in ${process.env.NODE_ENV || "development"} mode`);
 // start listening to requests on port 3000
 app.listen(port);
 
