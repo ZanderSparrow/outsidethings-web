@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 import { store } from "./store.js";
 import { router } from "./router.js";
 
+require('./stylesheets/main.scss');
+
 // render the main component
 ReactDOM.render(
   <Provider store={store}>

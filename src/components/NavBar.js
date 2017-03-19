@@ -1,32 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const NavBar = (props) => {
-  return (
-    <nav className="navbar navbar-default navbar-fixed-top">
-      <div className="container-fluid">
-        <div className="navbar-header">
-          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </button>
-          <a className="navbar-brand" href="#">OT</a>
+import { Dropdown } from './shared';
+
+class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selections: [{name: 'Trees'}, {name: 'Art'}],
+      selected: {name: 'Art'}
+    }
+  }
+
+  onSelect(category) {
+    console.log(category);
+    this.setState({
+      selected: category
+    });
+  }
+
+  render() {
+    return (
+      <nav className="navbar navbar-default navbar-fixed-top">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <Dropdown menuItems={this.state.selections} 
+                      onClick={this.onSelect.bind(this)}
+                      selected={this.state.selected} />
+          </div>
         </div>
-        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <form className="navbar-form navbar-left">
-            <div className="form-group">
-              <input type="text" className="form-control" placeholder="Search" />
-            </div>
-            <button type="submit" className="btn btn-default">Submit</button>
-          </form>
-          <ul className="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  );
+      </nav>
+    );
+  }
 }
 
 export default NavBar;
