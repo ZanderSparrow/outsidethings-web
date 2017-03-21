@@ -27,7 +27,7 @@ export default class MapComponent extends Component {
 
 MapComponent.defaultProps = {
   center: [37.7749, -122.4194],
-  zoom: 12,
+  zoom: 13,
   greatPlaceCoords: {lat: 37.756276, lng: -122.473182}
 };
 

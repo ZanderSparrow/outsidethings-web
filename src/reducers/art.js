@@ -36,8 +36,6 @@ export default (state = initialState, action) => {
         }
       })
       .filter(value => { return value !== undefined });
-      console.log("log the arts after processing");
-      console.log(artworks);
       return { ...state, fetching: false, error: null, data: artworks };
     default:
       return state;
