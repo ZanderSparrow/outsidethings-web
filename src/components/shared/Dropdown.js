@@ -6,7 +6,16 @@ import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 class Dropdown extends Component {
 
   handleSelect(eventKey) {
-    alert(`selected ${eventKey}`);
+    console.log(`selected ${eventKey}`);
+    this.props.onClick(eventKey);
+  }
+
+  renderMenuItems() {
+    this.props.menuItems.map(item => {
+      return (
+        <MenuItem eventKey={item.id}>{item.name}</MenuItem>
+      );
+    });
   }
 
   render() {

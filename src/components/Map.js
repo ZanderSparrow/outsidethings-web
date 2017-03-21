@@ -34,5 +34,5 @@ MapComponent.defaultProps = {
 MapComponent.propTypes = {
   center: PropTypes.array,
   zoom: PropTypes.number,
-  greatPlaceCoords: PropTypes.any
+  places: PropTypes.array
 };
