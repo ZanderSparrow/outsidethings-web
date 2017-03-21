@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-//import ArtList from './ArtList'; 
+import ArtList from './ArtList'; 
 import MapComponent from './Map';
 
 class Home extends Component {
@@ -12,9 +12,13 @@ class Home extends Component {
           <h2>Outside Things!</h2>
           <p className="lead">Find art or find trees</p>
         </div>
-        <div className="map-container" style={{height: '400px', width: '100%'}}>
-          <MapComponent />
-        </div>
+        {this.props.loading ? <div>Loading...</div> : 
+          <div className="map-container" style={{height: '400px', width: '100%'}}>
+            <MapComponent places={this.props.arts} />
+          </div> 
+          
+        }
+        <ArtList />
       </div>
     );
   }
@@ -22,7 +26,8 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return { 
-    arts: state.art
+    arts: state.art.data,
+    loading: state.art.fetching
   };
 };
 

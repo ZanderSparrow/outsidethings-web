@@ -43,6 +43,6 @@ module.exports = {
       verbose: true,
       dry: false, // true for simulation
     }),
-    new webpack.IgnorePlugin(/ReactContext|react\/addons/, /node_modules/)
+    new webpack.IgnorePlugin(/node_modules/)
   ],
 };

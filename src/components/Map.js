@@ -9,7 +9,7 @@ export default class MapComponent extends Component {
   renderMarkers(places) {
     return places.map(place => {
       return (
-        <MarkerComponent key={place.name + place.lat + place.lng} lat={place.lat} lng={place.lng} text={place.name} />
+        <MarkerComponent key={place.key} lat={place.lat} lng={place.lng} text={place.name} />
       );
     });
   }
@@ -19,7 +19,7 @@ export default class MapComponent extends Component {
        <GoogleMap
         center={this.props.center}
         zoom={this.props.zoom}>
-        {this.props.places && renderMarkers(this.props.places)}
+        {this.props.places && this.renderMarkers(this.props.places)}
       </GoogleMap>
     );
   }
@@ -27,7 +27,7 @@ export default class MapComponent extends Component {
 
 MapComponent.defaultProps = {
   center: [37.7749, -122.4194],
-  zoom: 11,
+  zoom: 12,
   greatPlaceCoords: {lat: 37.756276, lng: -122.473182}
 };
 

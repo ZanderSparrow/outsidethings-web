@@ -16,7 +16,7 @@ class ArtList extends Component {
     return (
       <div>
         <pre>{JSON.stringify(this.props.arts)}</pre>
-        {data.map(art => { return <ArtItem key={art._id_} artwork={art} /> })}
+        {data.map(art => { return <ArtItem key={art.key} artwork={art} /> })}
       </div>
     );
   }
