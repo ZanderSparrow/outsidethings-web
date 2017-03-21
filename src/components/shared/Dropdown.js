@@ -1,55 +1,27 @@
 import React, { Component } from 'react';
+import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 // Props: menuItems and onClick
 
 class Dropdown extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isVisible: false
-    }
-  }
 
-  onClick(item) {
-    console.log(item);
-    this.props.onClick(item);
-  }
-
-  onShow() {
-    this.setState({
-      isVisible: true
-    });
-    document.addEventListener("click", this.hide);
-  }
-
-  onHide() {
-    this.setState({
-      isVisible: false
-    });
-    document.removeEventListener("click", this.hide);
-  }
-
-  renderItems() {
-    this.props.menuItems.map(item => {
-      return (<div onClick={this.onClick.bind(item)}>
-        <span>{item.name}</span>
-        </div>);
-    })
+  handleSelect(eventKey) {
+    alert(`selected ${eventKey}`);
   }
 
   render() {
     return (
-      <div className={"dropdown-container" + (this.state.listVisible ? " show" : "")}>
-        <div className={"dropdown-display" + (this.state.listVisible ? " clicked": "")} onClick={this.show}>
-          <span>{this.props.selected.name}</span>
-          <i className="fa fa-angle-down"></i>
-        </div>
-        <div className="dropdown-list">
-          <div>
-            {this.renderItems()}
-          </div>
-        </div>
-      </div>
+      <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
+        <NavItem eventKey="1" href="/home">Art</NavItem>
+        <NavItem eventKey="2" title="Item">Trees</NavItem>
+        <NavDropdown eventKey="4" title="Dropdown" id="nav-dropdown">
+          <MenuItem eventKey="4.1">Action</MenuItem>
+          <MenuItem eventKey="4.2">Another action</MenuItem>
+          <MenuItem eventKey="4.3">Something else here</MenuItem>
+          <MenuItem divider />
+          <MenuItem eventKey="4.4">Logout</MenuItem>
+        </NavDropdown>
+      </Nav>
     );
   }
 }
