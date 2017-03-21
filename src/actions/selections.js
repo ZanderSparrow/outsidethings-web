@@ -8,5 +8,5 @@ export function setItem(itemId) {
 };
 
 export function setCategory(categoryId) {
-  return { type: SELECT_CATEGORY, payload: }
+  return { type: SELECT_CATEGORY, payload: categoryId }
 };
