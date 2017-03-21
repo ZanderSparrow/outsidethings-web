@@ -1,7 +1,10 @@
-import React from "react";
-import ArtList from './ArtList';
+import React, { Component } from "react";
+import { connect } from 'react-redux';
+//import ArtList from './ArtList'; 
+import MapComponent from './Map';
 
-export default class Home extends React.Component {
+class Home extends Component {
+
   render() {
     return (
       <div className="page-home">
@@ -9,8 +12,18 @@ export default class Home extends React.Component {
           <h2>Outside Things!</h2>
           <p className="lead">Find art or find trees</p>
         </div>
-        <ArtList />
+        <div className="map-container" style={{height: '400px', width: '100%'}}>
+          <MapComponent />
+        </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { 
+    arts: state.art
+  };
+};
+
+export default connect(mapStateToProps)(Home);
