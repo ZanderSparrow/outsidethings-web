@@ -14,11 +14,9 @@ class Home extends Component {
         </div>
         {this.props.loading ? <div>Loading...</div> : 
           <div className="map-container" style={{height: '400px', width: '100%'}}>
-            <MapComponent places={this.props.arts} />
+            <MapComponent />
           </div> 
-          
         }
-        <ArtList />
       </div>
     );
   }
@@ -26,9 +24,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return { 
-    arts: state.art.data,
-    trees: state.trees.data,
-    loading: state.art.fetching
+    loading: state.arts.fetching
   };
 };
 

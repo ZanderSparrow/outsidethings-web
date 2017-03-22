@@ -22,7 +22,9 @@ export default (state = initialState, action) => {
             species: tree.qSpecies,
             siteType: tree.qSiteInfo,
             caretaker: tree.qCaretaker,
-            careassist: tree.qCareAssistant
+            careassist: tree.qCareAssistant,
+            lat: tree.latitude,
+            lng: tree.longitude
           };
         }
       })

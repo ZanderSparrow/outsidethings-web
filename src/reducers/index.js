@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 
-import art from './art';
+import arts from './arts';
 import trees from './trees';
 import categories from './categories';
 import selections from './selections';
@@ -11,7 +11,7 @@ import selections from './selections';
 export const reducers = combineReducers({
   routing: routerReducer,
   form: formReducer,
-  art,
+  arts,
   trees,
   categories,
   selections

@@ -5,7 +5,7 @@ import {
 } from '../actions/types';
 
 const initialState = [
-  {name: 'art', id: 0},
+  {name: 'arts', id: 0},
   {name: 'trees', id: 1}
 ];
 

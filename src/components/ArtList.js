@@ -23,7 +23,7 @@ class ArtList extends Component {
 }
 
 const mapStateToProps = state => {
-  return { arts: state.art };
+  return { arts: state.arts };
 };
 
 export default connect(mapStateToProps)(ArtList);
