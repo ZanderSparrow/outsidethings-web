@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import { Dropdown } from './shared';
+import { setCategory } from '../actions';
 
 class NavBar extends Component {
 
-  onSelect(category) {
-    console.log(category);
-    
+  onSelect(categoryId) {
+    console.log(categoryId);
+    this.props.setCategory(Number.parseInt(categoryId));
   }
 
   render() {
@@ -17,7 +17,8 @@ class NavBar extends Component {
           <div className="navbar-header">
             <Dropdown menuItems={this.props.categories} 
                       onClick={this.onSelect.bind(this)}
-                      selected={this.props.selected} />
+                      selected={this.props.selected}
+                      title={"What to see?"} />
           </div>
         </div>
       </nav>
@@ -26,11 +27,10 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => {
-  let selected = _.find(state.categories, {id: state.selections.category});
   return {
     categories: state.categories,
-    selected
+    selected: state.selections.category
   };
 };
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps, { setCategory })(NavBar);
