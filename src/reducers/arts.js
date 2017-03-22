@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import {
   FETCH_ART,
   FETCH_ART_RECIEVED,
@@ -23,7 +25,7 @@ export default (state = initialState, action) => {
           let location = JSON.parse(art.geometry);
           if(location.coordinates) {
             return {
-              id: index,
+              id: JSON.stringify(art.geometry),
               key: art._id_,
               artist: art.artist,
               name: art.title,
@@ -37,7 +39,8 @@ export default (state = initialState, action) => {
         }
       })
       .filter(value => { return value !== undefined });
-      return { ...state, fetching: false, error: null, data: artworks };
+      let data = _.uniqBy(artworks, 'id');
+      return { ...state, fetching: false, error: null, data };
     default:
       return state;
   }

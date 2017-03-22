@@ -15,7 +15,6 @@ export default (state = initialState, action) => {
     case FETCH_TREES:
       return { ...state, fetching: true, error: null };
     case FETCH_TREES_RECIEVED:
-      console.log(action.payload);
       const data = action.payload.map(tree => {
         if(tree.latitude && tree.longitude) {
           return {
@@ -32,7 +31,6 @@ export default (state = initialState, action) => {
         }
       })
       .filter(value => { return value !== undefined });
-      console.log(data);
       return { ...state, fetching: false, data, error: null };
     case FETCH_TREES_REJECTED:
       return { ...state, fetching: false, error: action.payload };
