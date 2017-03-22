@@ -6,7 +6,6 @@ import { setCategory } from '../actions';
 class NavBar extends Component {
 
   onSelect(categoryId) {
-    console.log(categoryId);
     this.props.setCategory(Number.parseInt(categoryId));
   }
 

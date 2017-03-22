@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import "../stylesheets/main.scss";
-import { getArt } from '../actions';
+import { getArt, getTrees } from '../actions';
 
 import NavBar from './NavBar';
 
 class App extends Component {
   componentWillMount() {
     this.props.getArt();
+    this.props.getTrees();
   }
 
   render() {
@@ -20,4 +21,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, { getArt })(App);
+export default connect(null, { getArt, getTrees })(App);
