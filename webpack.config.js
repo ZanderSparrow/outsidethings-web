@@ -38,11 +38,6 @@ module.exports = {
     contentBase: __dirname + '/public',
   },
   plugins: [
-    new CleanWebpackPlugin(['css/main.css', 'js/bundle.js'], {
-      root: __dirname + '/public',
-      verbose: true,
-      dry: false, // true for simulation
-    }),
-    new webpack.IgnorePlugin(/node_modules/)
+
   ],
 };
