@@ -17,6 +17,7 @@ export function getTrees() {
   return dispatch => {
     dispatch({ type: FETCH_TREES });
     fetch(url_root, options).then(r => r.json()).then(trees => {
+      console.log("got trees in actions");
       dispatch({ type: FETCH_TREES_RECIEVED, payload: trees });
     })
     .catch(error => {

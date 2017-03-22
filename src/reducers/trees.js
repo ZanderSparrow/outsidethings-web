@@ -1,6 +1,6 @@
 import {
   FETCH_TREES,
-  FETCH_TREES_RECEIVED,
+  FETCH_TREES_RECIEVED,
   FETCH_TREES_REJECTED
 } from '../actions/types';
 
@@ -14,22 +14,26 @@ export default (state = initialState, action) => {
   switch(action.type) {
     case FETCH_TREES:
       return { ...state, fetching: true, error: null };
-    case FETCH_TREES_RECEIVED:
-      const trees = action.payload.map(tree => {
+    case FETCH_TREES_RECIEVED:
+      console.log(action.payload);
+      const data = action.payload.map(tree => {
         if(tree.latitude && tree.longitude) {
           return {
             id: tree.treeid,
-            species: tree.qSpecies,
-            siteType: tree.qSiteInfo,
-            caretaker: tree.qCaretaker,
-            careassist: tree.qCareAssistant,
-            lat: tree.latitude,
-            lng: tree.longitude
+            key: tree.treeid,
+            name: tree.qspecies ,
+            species: tree.qspecies,
+            siteType: tree.qsiteinfo,
+            caretaker: tree.qcaretaker,
+            careassist: tree.qcareAssistant,
+            lat: Number.parseFloat(tree.latitude),
+            lng: Number.parseFloat(tree.longitude)
           };
         }
       })
       .filter(value => { return value !== undefined });
-      return { ...state, fetching: false, data: trees, error: null };
+      console.log(data);
+      return { ...state, fetching: false, data, error: null };
     case FETCH_TREES_REJECTED:
       return { ...state, fetching: false, error: action.payload };
     default:
