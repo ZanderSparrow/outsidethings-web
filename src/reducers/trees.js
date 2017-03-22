@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
   FETCH_TREES,
   FETCH_TREES_RECIEVED,
@@ -15,10 +16,10 @@ export default (state = initialState, action) => {
     case FETCH_TREES:
       return { ...state, fetching: true, error: null };
     case FETCH_TREES_RECIEVED:
-      const data = action.payload.map(tree => {
+      let data = action.payload.map(tree => {
         if(tree.latitude && tree.longitude) {
           return {
-            id: tree.treeid,
+            id: tree.latitude + tree.longitude,
             key: tree.treeid,
             name: tree.qspecies ,
             species: tree.qspecies,
@@ -31,6 +32,7 @@ export default (state = initialState, action) => {
         }
       })
       .filter(value => { return value !== undefined });
+      data = _.uniqBy(data, 'id');
       return { ...state, fetching: false, data, error: null };
     case FETCH_TREES_REJECTED:
       return { ...state, fetching: false, error: action.payload };
