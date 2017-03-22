@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import _ from 'lodash';
 import { Dropdown } from './shared';
 
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selections: [{name: 'Trees'}, {name: 'Art'}],
-      selected: {name: 'Art'}
-    }
-  }
 
   onSelect(category) {
     console.log(category);
-    this.setState({
-      selected: category
-    });
+    
   }
 
   render() {
@@ -23,9 +15,9 @@ class NavBar extends Component {
       <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container-fluid">
           <div className="navbar-header">
-            <Dropdown menuItems={this.state.selections} 
+            <Dropdown menuItems={this.props.categories} 
                       onClick={this.onSelect.bind(this)}
-                      selected={this.state.selected} />
+                      selected={this.props.selected} />
           </div>
         </div>
       </nav>
@@ -33,4 +25,12 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = state => {
+  let selected = _.find(state.categories, {id: state.selections.category});
+  return {
+    categories: state.categories,
+    selected
+  };
+};
+
+export default connect(mapStateToProps)(NavBar);

@@ -27,6 +27,7 @@ class Home extends Component {
 const mapStateToProps = state => {
   return { 
     arts: state.art.data,
+    trees: state.trees.data,
     loading: state.art.fetching
   };
 };

@@ -18,11 +18,12 @@ export default (state = initialState, action) => {
     case FETCH_ART_REJECTED:
       return { ...state, fetching: false, error: action.payload };
     case FETCH_ART_RECIEVED:
-      const artworks = action.payload.map(art => {
+      const artworks = action.payload.map((art, index) => {
         if(IsJsonString(art.geometry)) {
           let location = JSON.parse(art.geometry);
           if(location.coordinates) {
             return {
+              id: index,
               key: art._id_,
               artist: art.artist,
               name: art.title,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 // Props: menuItems and onClick
@@ -10,29 +10,27 @@ class Dropdown extends Component {
     this.props.onClick(eventKey);
   }
 
-  renderMenuItems() {
-    this.props.menuItems.map(item => {
-      return (
-        <MenuItem eventKey={item.id}>{item.name}</MenuItem>
-      );
-    });
-  }
-
   render() {
     return (
-      <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
+      <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect.bind(this)}>
         <NavItem eventKey="1" href="/home">Art</NavItem>
         <NavItem eventKey="2" title="Item">Trees</NavItem>
         <NavDropdown eventKey="4" title="Dropdown" id="nav-dropdown">
-          <MenuItem eventKey="4.1">Action</MenuItem>
-          <MenuItem eventKey="4.2">Another action</MenuItem>
-          <MenuItem eventKey="4.3">Something else here</MenuItem>
+          {this.props.menuItems.map(item => {
+            return <MenuItem key={item.id} eventKey={item.name}>{item.name}</MenuItem>
+          })}
           <MenuItem divider />
-          <MenuItem eventKey="4.4">Logout</MenuItem>
+          <MenuItem eventKey="logout">Logout</MenuItem>
         </NavDropdown>
       </Nav>
     );
   }
+}
+
+Dropdown.propTypes = {
+  menuItems: PropTypes.array.isRequired,
+  onClick: PropTypes.func,
+  selected: PropTypes.object
 }
 
 export { Dropdown };
